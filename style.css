@@ -1,0 +1,150 @@
+:root {
+  --surface: #eef1f7;
+  --text: #1f2937;
+  --brand: #3563e9;
+  --success: #2e9d5b;
+  --danger: #d64545;
+
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 16px;
+  --sp-4: 24px;
+  --sp-5: 32px;
+  --sp-6: 48px;
+
+  --radius: 10px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--surface);
+  color: var(--text);
+}
+
+.app {
+  max-width: 520px;
+  margin: var(--sp-6) auto;
+  padding: var(--sp-5);
+  background: white;
+  border-radius: var(--radius);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 0.06);
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+h1 { margin: 0; font-size: 1.6rem; }
+
+.counter { margin: 0; font-size: 0.9rem; opacity: 0.6; }
+
+
+.task-form {
+  display: flex;
+  gap: var(--sp-2);
+  margin-top: var(--sp-4);
+}
+
+.task-form input {
+  flex: 1;
+  padding: var(--sp-2) var(--sp-3);
+  font: inherit;
+  border: 1px solid rgb(0 0 0 / 0.15);
+  border-radius: var(--radius);
+  transition: border-color 180ms ease-out;
+}
+
+.task-form input:focus { outline: none; border-color: var(--brand); }
+.task-form input.invalid { border-color: var(--danger); }
+
+.add-btn {
+  padding: var(--sp-2) var(--sp-3);
+  font: inherit;
+  color: white;
+  background: var(--brand);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: opacity 180ms ease-out;
+}
+
+.add-btn:hover { opacity: 0.85; }
+
+.error {
+  min-height: 1.2em;
+  margin: var(--sp-2) 0 0;
+  font-size: 0.9rem;
+  color: var(--danger);
+}
+
+
+.task-list {
+  list-style: none;
+  margin: var(--sp-3) 0 0;
+  padding: 0;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-3);
+  padding: var(--sp-2) var(--sp-3);
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background 180ms ease-out;
+}
+
+.task:hover { background: var(--surface); }
+
+.task .toggle {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--success);
+  cursor: pointer;
+}
+
+.task .title { flex: 1; overflow-wrap: anywhere; }
+
+
+.task.done .title {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+.task .delete {
+  padding: 0 var(--sp-2);
+  font-size: 1.3rem;
+  line-height: 1;
+  color: var(--danger);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 180ms ease-out, transform 180ms ease-out;
+}
+
+.task .delete:hover { opacity: 1; transform: scale(1.15); }
+
+.empty-state {
+  margin: var(--sp-4) 0 0;
+  text-align: center;
+  opacity: 0.6;
+}
+
+button:focus-visible,
+.toggle:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
